@@ -24,21 +24,37 @@
 
   <!-- Lesson Content -->
   <main class="lesson-container">
-    <!-- Live Code Editor -->
+    <!-- Editor with Tabs -->
     <div class="code-editor">
-      <div class="editor-header">
-        <span class="dot red"></span>
-        <span class="dot yellow"></span>
-        <span class="dot green"></span>
-        <span>semantic-layout.html</span>
-        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+      <div class="editor-tabs">
+        <button class="tab-button active" data-tab="code">Code</button>
+        <button class="tab-button" data-tab="preview">Live Preview</button>
+        <button class="tab-button" data-tab="console">Console</button>
       </div>
-      <pre><code class="language-html" id="code-block">
+      
+      <div class="editor-content">
+        <!-- Code Tab -->
+        <div class="tab-pane active" id="code-tab">
+          <div class="editor-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span>semantic-page.html</span>
+            <button class="copy-button" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code class="language-html" id="code-block" contenteditable="true">
 &lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
   &lt;meta charset="UTF-8"&gt;
-  &lt;title&gt;Semantic Layout&lt;/title&gt;
+  &lt;title&gt;Semantic Example&lt;/title&gt;
+  &lt;style&gt;
+    body { font-family: Arial; margin: 0; }
+    header { background: #6e45e2; color: white; padding: 1rem; }
+    nav { display: flex; gap: 1rem; }
+    main { padding: 2rem; }
+    footer { background: #0f0e17; color: white; padding: 1rem; }
+  &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
   &lt;header&gt;
@@ -52,7 +68,8 @@
   &lt;main&gt;
     &lt;article&gt;
       &lt;h2&gt;Article Title&lt;/h2&gt;
-      &lt;p&gt;Main content goes here.&lt;/p&gt;
+      &lt;p&gt;This is a semantic HTML structure.&lt;/p&gt;
+      &lt;button onclick="console.log('Button clicked!')"&gt;Test Console&lt;/button&gt;
     &lt;/article&gt;
   &lt;/main&gt;
   
@@ -61,28 +78,54 @@
   &lt;/footer&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-      </code></pre>
+          </code></pre>
+        </div>
+        
+        <!-- Preview Tab -->
+        <div class="tab-pane" id="preview-tab">
+          <iframe class="live-preview" sandbox="allow-scripts"></iframe>
+        </div>
+        
+        <!-- Console Tab -->
+        <div class="tab-pane" id="console-tab">
+          <div class="console-header">
+            <span>Console Output</span>
+          </div>
+          <pre id="console-output"></pre>
+        </div>
+      </div>
+      
+      <div class="resize-handle"></div>
     </div>
 
     <!-- Theory Section -->
     <div class="theory">
-      <h2>Why Semantic HTML?</h2>
+      <h2>Semantic Elements</h2>
       
       <div class="concept-card">
         <h3>1. Structural Tags</h3>
-        <p>Replace generic <code>&lt;div&gt;</code> with meaningful elements:</p>
+        <p>Replace &lt;div&gt; with meaningful elements:</p>
         <div class="snippet">
-          &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;,<br>
-          &lt;article&gt;, &lt;footer&gt;
+&lt;header&gt; &lt;nav&gt; &lt;main&gt;
+&lt;section&gt; &lt;article&gt; &lt;footer&gt;
         </div>
       </div>
-
+      
       <div class="concept-card">
-        <h3>2. Accessibility Benefits</h3>
-        <p>Screen readers use semantic tags for navigation.</p>
+        <h3>2. Landmark Roles</h3>
+        <p>Screen readers use these for navigation:</p>
         <div class="snippet">
-          &lt;section aria-label="Main Content"&gt;<br>
-          &lt;nav aria-label="Primary"&gt;
+&lt;main role="main"&gt;
+&lt;nav aria-label="Primary navigation"&gt;
+        </div>
+      </div>
+      
+      <div class="concept-card">
+        <h3>3. Text Semantics</h3>
+        <p>Proper content tagging:</p>
+        <div class="snippet">
+&lt;time datetime="2023-01-01"&gt;New Year&lt;/time&gt;
+&lt;address&gt;Contact info&lt;/address&gt;
         </div>
       </div>
 
