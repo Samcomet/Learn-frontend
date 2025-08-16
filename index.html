@@ -5,6 +5,161 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WEB DEV SCHOOL</title>
   <link rel="stylesheet" href="./assets/css/style.css">
+  <script>
+  // Apply theme immediately to prevent flash of unstyled content
+  document.body.dataset.theme = localStorage.getItem('theme') || 'dark';
+</script>
+  <style>
+    /* Contact Developer Button */
+    .contact-developer {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 100;
+    }
+    
+    .contact-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 0.8rem 1.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 15px rgba(110, 69, 226, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .contact-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(110, 69, 226, 0.4);
+    }
+    
+    /* Contact Modal */
+    .contact-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 400px;
+      z-index: 1000;
+      display: none;
+    }
+    
+    .contact-modal.active {
+      display: block;
+    }
+    
+    .contact-modal h2 {
+      margin-top: 0;
+      color: var(--primary);
+      text-align: center;
+    }
+    
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    
+    .contact-method:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .contact-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--primary);
+    }
+    
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .contact-label {
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+    
+    .contact-value {
+      font-weight: 500;
+      word-break: break-all;
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+    
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      z-index: 999;
+      display: none;
+    }
+    
+    .overlay.active {
+      display: block;
+    }
+    
+    .copy-btn {
+      margin-left: auto;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 4px;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .copy-btn:hover {
+      background: var(--primary);
+    }
+    
+    @media (max-width: 768px) {
+      .contact-btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+      }
+      
+      .contact-modal {
+        padding: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Glassmorphic Navigation -->
@@ -27,13 +182,107 @@
     <a href="./courses/html/index.html"><button class="cta-button">Start Learning →</button></a>
   </section>
 
-  <!-- Course Grid (Placeholder) -->
+  <!-- Course Grid -->
   <div class="course-grid">
     <a href="./courses/html/index.html"><div class="course-card">HTML</div></a>
     <a href="#"><div class="course-card">CSS</div></a>
     <a href="#"><div class="course-card">JavaScript</div></a>
   </div>
 
+  <!-- Contact Developer Button -->
+  <div class="contact-developer">
+    <button class="contact-btn" id="contact-trigger">
+      <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+      Contact Developer
+    </button>
+  </div>
+
+  <!-- Contact Modal -->
+  <div class="overlay" id="contact-overlay"></div>
+  <div class="contact-modal" id="contact-modal">
+    <button class="modal-close" id="modal-close">&times;</button>
+    <h2>Contact Options</h2>
+    
+    <div class="contact-methods">
+      <!-- Email -->
+      <div class="contact-method">
+        <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        <div class="contact-details">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">samcomet24@gmail.com</span>
+        </div>
+        <button class="copy-btn" data-value="samcomet24@gmail.com">Copy</button>
+      </div>
+      
+      <!-- LinkedIn -->
+      <div class="contact-method">
+        <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
+        <div class="contact-details">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">linkedin.com/in/webdevschool</span>
+        </div>
+        <button class="copy-btn" data-value="linkedin.com/in/webdevschool">Copy</button>
+      </div>
+      
+      <!-- GitHub -->
+      <div class="contact-method">
+        <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
+        </svg>
+        <div class="contact-details">
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value">github.com/webdevschool</span>
+        </div>
+        <button class="copy-btn" data-value="github.com/webdevschool">Copy</button>
+      </div>
+    </div>
+  </div>
+
   <script src="assets/js/main.js"></script>
+  <script>
+    // Contact Modal Functionality
+    const contactTrigger = document.getElementById('contact-trigger');
+    const contactModal = document.getElementById('contact-modal');
+    const contactOverlay = document.getElementById('contact-overlay');
+    const modalClose = document.getElementById('modal-close');
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    
+    // Toggle modal
+    const toggleModal = () => {
+      contactModal.classList.toggle('active');
+      contactOverlay.classList.toggle('active');
+      document.body.style.overflow = contactModal.classList.contains('active') ? 'hidden' : '';
+    };
+    
+    contactTrigger.addEventListener('click', toggleModal);
+    modalClose.addEventListener('click', toggleModal);
+    contactOverlay.addEventListener('click', toggleModal);
+    
+    // Copy functionality
+    copyButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const textToCopy = btn.getAttribute('data-value');
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          btn.textContent = 'Copied!';
+          setTimeout(() => {
+            btn.textContent = 'Copy';
+          }, 2000);
+        });
+      });
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && contactModal.classList.contains('active')) {
+        toggleModal();
+      }
+    });
+  </script>
 </body>
 </html>

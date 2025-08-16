@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <title>HTML Cheat Sheet | Web Dev School</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
+  <script>
+  // Apply theme immediately to prevent flash of unstyled content
+  document.body.dataset.theme = localStorage.getItem('theme') || 'dark';
+</script>
   <style>
     .cheatsheet-container {
       display: grid;
@@ -66,7 +70,7 @@
   <!-- Glass Header -->
   <header class="glass-header">
     <nav>
-      <a href="../" class="logo">← BACK TO HTML</a>
+      <a href="./index.html" class="logo">← BACK TO HTML</a>
       <button id="theme-toggle">🌓</button>
     </nav>
   </header>
@@ -231,5 +235,6 @@
   </div>
 
   <script src="../../assets/js/course.js"></script>
+  <script src="../../assets/js/main.js"></script>
 </body>
 </html>

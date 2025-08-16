@@ -1,25 +1,48 @@
-// Dark/Light Mode Toggle
-const themeToggle = document.getElementById("theme-toggle");
-themeToggle.addEventListener("click", () => {
-  const currentTheme = document.body.dataset.theme;
-  document.body.dataset.theme = currentTheme === "dark" ? "light" : "dark";
-});
+// ===== Persistent Dark/Light Mode Toggle =====
+function initializeTheme() {
+  const themeToggle = document.getElementById('theme-toggle');
+  
+  // Set initial theme from localStorage or default to dark
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  document.body.dataset.theme = savedTheme;
+  
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.body.dataset.theme;
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      // Update current page
+      document.body.dataset.theme = newTheme;
+      
+      // Save to localStorage for other pages
+      localStorage.setItem('theme', newTheme);
+    });
+  }
+}
 
-// Animate Course Cards on Scroll
-const courseCards = document.querySelectorAll(".course-card");
+// ===== Scroll Animations =====
+function initializeAnimations() {
+  const animatedElements = document.querySelectorAll('.course-card, .lesson-card');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = "1";
-      entry.target.style.transform = "translateY(0)";
-    }
+  animatedElements.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s, transform 0.5s';
+    observer.observe(el);
   });
-}, { threshold: 0.1 });
+}
 
-courseCards.forEach(card => {
-  card.style.opacity = "0";
-  card.style.transform = "translateY(20px)";
-  card.style.transition = "opacity 0.5s, transform 0.5s";
-  observer.observe(card);
+// Initialize everything when page loads
+document.addEventListener('DOMContentLoaded', () => {
+  initializeTheme();
+  initializeAnimations();
 });

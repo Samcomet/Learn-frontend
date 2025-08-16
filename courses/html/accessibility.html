@@ -2,14 +2,20 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HTML Accessibility | Web Dev School</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
+  <script>
+  // Apply theme immediately to prevent flash of unstyled content
+  document.body.dataset.theme = localStorage.getItem('theme') || 'dark';
+</script>
   <style>
+    /* Improved Accessibility Tips Grid */
     .accessibility-tips {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
-      padding: 2rem;
+      padding: 1rem;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -21,6 +27,7 @@
       border-radius: 12px;
       padding: 1.5rem;
       transition: all 0.3s ease;
+      margin-bottom: 0;
     }
     
     .tip-card:hover {
@@ -33,36 +40,106 @@
       margin-top: 0;
       border-bottom: 2px solid;
       padding-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    
+    .good-example, .bad-example {
+      padding: 0.8rem;
+      margin: 1rem 0;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.9rem;
+      overflow-x: auto;
     }
     
     .good-example {
       background: rgba(136, 211, 206, 0.1);
       border-left: 3px solid var(--secondary);
-      padding: 0.8rem;
-      margin: 1rem 0;
-      border-radius: 0 4px 4px 0;
     }
     
     .bad-example {
       background: rgba(255, 83, 112, 0.1);
       border-left: 3px solid #ff5370;
-      padding: 0.8rem;
-      margin: 1rem 0;
-      border-radius: 0 4px 4px 0;
     }
     
     .example-label {
       font-weight: bold;
       margin-bottom: 0.5rem;
       display: block;
+      font-size: 0.85rem;
+    }
+
+    /* Fixed Lesson Container */
+    .lesson-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+      display: grid;
+      gap: 2rem;
+    }
+
+    /* Editor Fixes */
+    .code-editor {
+      width: 100%;
+      min-width: 0; /* Fix for grid item overflow */
+    }
+
+    .editor-content {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    #code-tab {
+      display: block !important; /* Ensure code tab is visible */
+    }
+
+    #code-block {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    /* Responsive Adjustments */
+    @media (min-width: 992px) {
+      .lesson-container {
+        grid-template-columns: minmax(400px, 1fr) 1fr;
+        padding: 2rem;
+        gap: 3rem;
+      }
+      
+      .code-editor {
+        position: sticky;
+        top: 2rem;
+        height: fit-content;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .lesson-hero {
+        padding: 5rem 1rem 2rem;
+      }
+      
+      .accessibility-tips {
+        grid-template-columns: 1fr;
+      }
+      
+      .live-preview {
+        height: 300px;
+      }
+    }
+
+    /* Button spacing */
+    #complete-lesson {
+      margin: 2rem auto;
+      display: block;
+      width: 100%;
+      max-width: 300px;
     }
   </style>
 </head>
 <body>
-  <!-- Glass Header -->
+    <!-- Glass Header -->
   <header class="glass-header">
     <nav>
-      <a href="../" class="logo">← BACK TO HTML</a>
+      <a href="./index.html" class="logo">← BACK TO HTML</a>
       <button id="theme-toggle">🌓</button>
     </nav>
   </header>
@@ -286,5 +363,7 @@
   </main>
 
   <script src="../../assets/js/course.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <!-- ... -->
 </body>
 </html>

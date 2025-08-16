@@ -4,12 +4,16 @@
   <meta charset="UTF-8">
   <title>Meta Tags & SEO | Web Dev School</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
+  <script>
+  // Apply theme immediately to prevent flash of unstyled content
+  document.body.dataset.theme = localStorage.getItem('theme') || 'dark';
+</script>
 </head>
 <body>
   <!-- Glass Header -->
   <header class="glass-header">
     <nav>
-      <a href="../" class="logo">← BACK TO HTML</a>
+      <a href="./index.html" class="logo">← BACK TO HTML</a>
       <button id="theme-toggle">🌓</button>
     </nav>
   </header>

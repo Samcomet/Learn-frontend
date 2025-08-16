@@ -753,3 +753,21 @@ code {
   cursor: ns-resize;
   margin: 5px 0;
 }
+
+
+[data-theme="dark"] {
+  /* Your dark theme variables */
+  --bg: #0f0e17;
+  --text: #fffffe;
+}
+
+[data-theme="light"] {
+  /* Your light theme variables */
+  --bg: #fffffe;
+  --text: #0f0e17;
+}
+
+.course-card,
+.lesson-card {
+  will-change: opacity, transform; /* Improves animation performance */
+}
