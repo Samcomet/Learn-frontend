@@ -2,8 +2,40 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <title>HTML Forms | Web Dev School</title>
+  <title>HTML Forms - Web Dev School</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    /* Beginner-friendly styles */
+    .explanation {
+      background: rgba(110, 69, 226, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1rem;
+      margin: 1.5rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .analogy {
+      background: rgba(136, 211, 206, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    .code-comment {
+      color: #88d3ce;
+      font-style: italic;
+      margin: 0.5rem 0;
+    }
+    .hands-on {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    .form-visual {
+      border: 2px dashed var(--primary);
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+  </style>
 </head>
 <body>
   <!-- Glass Header -->
@@ -17,6 +49,7 @@
   <!-- Lesson Hero -->
   <section class="lesson-hero">
     <h1 class="glow-text">HTML <span>FORMS</span></h1>
+    <p>How to collect information from visitors</p>
     <div class="progress-bar">
       <div class="progress" style="width: 30%;" data-progress="30%"></div>
     </div>
@@ -24,12 +57,35 @@
 
   <!-- Lesson Content -->
   <main class="lesson-container">
-    <!-- Code Editor -->
+    <!-- Theory First -->
+    <div class="theory">
+      <div class="explanation">
+        <h3>What Are Forms?</h3>
+        <p>Forms are how websites collect information - like when you:</p>
+        <ul>
+          <li>Sign up for a website</li>
+          <li>Leave a comment</li>
+          <li>Make a purchase</li>
+        </ul>
+        
+        <div class="analogy">
+          <strong>📝 Analogy:</strong> Think of forms like paper forms you fill out at the doctor's office, but digital!
+        </div>
+        
+        <div class="form-visual">
+          <p><strong>Every form has 3 key parts:</strong></p>
+          <p>1. <u>Input fields</u> (where you type)<br>
+             2. <u>Labels</u> (tells you what to enter)<br>
+             3. <u>Submit button</u> (sends your answers)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Editor -->
     <div class="code-editor">
       <div class="editor-tabs">
-        <button class="tab-button active" data-tab="code">Code</button>
-        <button class="tab-button" data-tab="preview">Live Preview</button>
-        <button class="tab-button" data-tab="console">Console</button>
+        <button class="tab-button active" data-tab="code">Try It Yourself</button>
+        <button class="tab-button" data-tab="preview">See Your Form</button>
       </div>
       
       <div class="editor-content">
@@ -46,105 +102,173 @@
 &lt;html lang="en"&gt;
 &lt;head&gt;
   &lt;meta charset="UTF-8"&gt;
-  &lt;title&gt;Contact Form&lt;/title&gt;
+  &lt;title&gt;Contact Us&lt;/title&gt;
   &lt;style&gt;
-    body { font-family: Arial; padding: 2rem; }
-    .form-group { margin-bottom: 1rem; }
-    label { display: block; margin-bottom: 0.5rem; }
+    body { 
+      font-family: Arial; 
+      padding: 2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
     input, textarea, select {
       width: 100%;
-      padding: 0.5rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
+      padding: 0.8rem;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 1rem;
     }
-    button { background: #6e45e2; color: white; padding: 0.5rem 1rem; border: none; }
+    button {
+      background: #6e45e2;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #5a35c9;
+    }
   &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
+  &lt;h1&gt;Contact Us&lt;/h1&gt;
+  
   &lt;form id="contactForm"&gt;
+    &lt;!-- TEXT INPUT --&gt;
     &lt;div class="form-group"&gt;
-      &lt;label for="name"&gt;Full Name*&lt;/label&gt;
-      &lt;input type="text" id="name" required&gt;
+      &lt;label for="name"&gt;Your Name*&lt;/label&gt;
+      &lt;input 
+        type="text" 
+        id="name" 
+        placeholder="John Doe"
+        required
+      &gt;
     &lt;/div&gt;
     
+    &lt;!-- EMAIL INPUT --&gt;
     &lt;div class="form-group"&gt;
       &lt;label for="email"&gt;Email*&lt;/label&gt;
-      &lt;input type="email" id="email" required&gt;
+      &lt;input 
+        type="email" 
+        id="email" 
+        placeholder="you@example.com"
+        required
+      &gt;
     &lt;/div&gt;
     
+    &lt;!-- DROPDOWN --&gt;
     &lt;div class="form-group"&gt;
-      &lt;label for="service"&gt;Service Needed&lt;/label&gt;
-      &lt;select id="service"&gt;
-        &lt;option value=""&gt;Select...&lt;/option&gt;
-        &lt;option value="web"&gt;Web Development&lt;/option&gt;
-        &lt;option value="design"&gt;Design&lt;/option&gt;
+      &lt;label for="topic"&gt;What's this about?&lt;/label&gt;
+      &lt;select id="topic"&gt;
+        &lt;option value=""&gt;-- Please choose --&lt;/option&gt;
+        &lt;option value="question"&gt;I have a question&lt;/option&gt;
+        &lt;option value="feedback"&gt;I want to give feedback&lt;/option&gt;
+        &lt;option value="other"&gt;Something else&lt;/option&gt;
       &lt;/select&gt;
     &lt;/div&gt;
     
+    &lt;!-- TEXTAREA --&gt;
     &lt;div class="form-group"&gt;
-      &lt;label for="message"&gt;Message&lt;/label&gt;
-      &lt;textarea id="message" rows="4"&gt;&lt;/textarea&gt;
+      &lt;label for="message"&gt;Your Message&lt;/label&gt;
+      &lt;textarea 
+        id="message" 
+        rows="5"
+        placeholder="Type your message here..."
+      &gt;&lt;/textarea&gt;
     &lt;/div&gt;
     
-    &lt;button type="submit" onclick="console.log('Form submitted!')"&gt;Send&lt;/button&gt;
+    &lt;!-- SUBMIT BUTTON --&gt;
+    &lt;button type="submit"&gt;
+      Send Message
+    &lt;/button&gt;
   &lt;/form&gt;
 &lt;/body&gt;
 &lt;/html&gt;
           </code></pre>
+          
+          <div class="hands-on">
+            <h3>✍️ Let's Practice!</h3>
+            <p><strong>Try these edits:</strong></p>
+            <ol>
+              <li>Change the placeholder text in the name field</li>
+              <li>Add a new option to the dropdown menu</li>
+              <li>Make the message box taller by increasing "rows"</li>
+            </ol>
+            <p>Then click <strong>"See Your Form"</strong> to view changes!</p>
+          </div>
         </div>
         
-        <!-- Preview Tab -->
         <div class="tab-pane" id="preview-tab">
           <iframe class="live-preview" sandbox="allow-scripts"></iframe>
         </div>
-        
-        <!-- Console Tab -->
-        <div class="tab-pane" id="console-tab">
-          <div class="console-header">
-            <span>Console Output</span>
-          </div>
-          <pre id="console-output"></pre>
-        </div>
       </div>
-      
-      <div class="resize-handle"></div>
     </div>
 
     <!-- Theory Section -->
     <div class="theory">
-      <h2>Form Essentials</h2>
-      
       <div class="concept-card">
-        <h3>1. Input Types</h3>
-        <p>HTML5 introduced specialized inputs:</p>
+        <h3>1. Form Building Blocks</h3>
         <div class="snippet">
-&lt;input type="email"&gt;
-&lt;input type="date"&gt;
-&lt;input type="color"&gt;
+&lt;form&gt; &lt;!-- The form container --&gt;
+  &lt;label for="id"&gt;Description:&lt;/label&gt;
+  &lt;input type="text" id="id"&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+        </div>
+        <div class="code-comment">
+          Every form needs these three parts working together.
         </div>
       </div>
       
       <div class="concept-card">
-        <h3>2. Validation</h3>
-        <p>Built-in browser validation:</p>
-        <div class="snippet">
-&lt;input required&gt;
-&lt;input pattern="\d{3}"&gt;
-&lt;input minlength="8"&gt;
-        </div>
+        <h3>2. Common Input Types</h3>
+        <table class="input-types">
+          <tr>
+            <td><code>&lt;input type="text"&gt;</code></td>
+            <td>Regular text (names, etc.)</td>
+          </tr>
+          <tr>
+            <td><code>&lt;input type="email"&gt;</code></td>
+            <td>Validates email format</td>
+          </tr>
+          <tr>
+            <td><code>&lt;input type="password"&gt;</code></td>
+            <td>Hides what you type</td>
+          </tr>
+          <tr>
+            <td><code>&lt;textarea&gt;&lt;/textarea&gt;</code></td>
+            <td>Multi-line text (comments)</td>
+          </tr>
+        </table>
       </div>
       
       <div class="concept-card">
-        <h3>3. Accessibility</h3>
-        <p>Proper labeling and ARIA:</p>
+        <h3>3. Help Users Get It Right</h3>
         <div class="snippet">
-&lt;label for="email"&gt;Email&lt;/label&gt;
-&lt;input aria-describedby="email-help"&gt;
-&lt;div id="email-help"&gt;Your company email&lt;/div&gt;
+&lt;input required&gt;          &lt;!-- Can't be left empty --&gt;
+&lt;input minlength="8"&gt;     &lt;!-- At least 8 characters --&gt;
+&lt;input placeholder="Hint"&gt; &lt;!-- Example text --&gt;
+        </div>
+        <div class="code-comment">
+          These help users fill out forms correctly on the first try.
         </div>
       </div>
 
-      <button class="cta-button" id="complete-lesson">Mark as Completed</button>
+      <button class="cta-button" id="complete-lesson">I Understand! Mark as Completed</button>
+      
+      <div class="explanation" style="margin-top: 1rem;">
+        <h3>➡ Next Up: Form Validation</h3>
+        <p>Learn how to check if users filled out forms correctly before they submit!</p>
+      </div>
     </div>
   </main>
 

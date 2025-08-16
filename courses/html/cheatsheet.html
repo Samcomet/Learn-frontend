@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Cheat Sheet | Web Dev School</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    .cheatsheet-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .cheat-card {
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .cheat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(110, 69, 226, 0.2);
+    }
+    
+    .cheat-card h3 {
+      color: var(--primary);
+      margin-top: 0;
+      border-bottom: 2px solid;
+      padding-bottom: 0.5rem;
+    }
+    
+    .snippet {
+      background: rgba(0, 0, 0, 0.3);
+      border-left: 3px solid var(--primary);
+      padding: 0.8rem;
+      margin: 1rem 0;
+      font-family: monospace;
+      border-radius: 0 4px 4px 0;
+      overflow-x: auto;
+    }
+    
+    .back-btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.8rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .back-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(110, 69, 226, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <!-- Glass Header -->
+  <header class="glass-header">
+    <nav>
+      <a href="../" class="logo">← BACK TO HTML</a>
+      <button id="theme-toggle">🌓</button>
+    </nav>
+  </header>
+
+  <!-- Cheat Sheet Hero -->
+  <section class="lesson-hero">
+    <h1 class="glow-text">HTML <span>CHEAT SHEET</span></h1>
+    <p>Quick reference for all essential HTML elements</p>
+  </section>
+
+  <!-- Cheat Sheet Content -->
+  <main class="cheatsheet-container">
+    <!-- Document Structure -->
+    <div class="cheat-card">
+      <h3>Document Structure</h3>
+      <div class="snippet">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Content --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+      </div>
+    </div>
+
+    <!-- Text Elements -->
+    <div class="cheat-card">
+      <h3>Text Elements</h3>
+      <div class="snippet">
+&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;p&gt;Paragraph text&lt;/p&gt;
+&lt;strong&gt;Bold text&lt;/strong&gt;
+&lt;em&gt;Italic text&lt;/em&gt;
+&lt;span&gt;Inline container&lt;/span&gt;
+&lt;br&gt; (line break)
+&lt;hr&gt; (horizontal rule)
+      </div>
+    </div>
+
+    <!-- Links -->
+    <div class="cheat-card">
+      <h3>Links</h3>
+      <div class="snippet">
+&lt;a href="url"&gt;Link text&lt;/a&gt;
+&lt;a href="#id"&gt;Anchor link&lt;/a&gt;
+&lt;a href="mailto:email@example.com"&gt;Email link&lt;/a&gt;
+&lt;a href="tel:+1234567890"&gt;Phone link&lt;/a&gt;
+&lt;a href="url" target="_blank" rel="noopener"&gt;
+  Open in new tab
+&lt;/a&gt;
+      </div>
+    </div>
+
+    <!-- Lists -->
+    <div class="cheat-card">
+      <h3>Lists</h3>
+      <div class="snippet">
+&lt;ul&gt;
+  &lt;li&gt;Unordered item&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Ordered item&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;Term&lt;/dt&gt;
+  &lt;dd&gt;Definition&lt;/dd&gt;
+&lt;/dl&gt;
+      </div>
+    </div>
+
+    <!-- Media -->
+    <div class="cheat-card">
+      <h3>Media</h3>
+      <div class="snippet">
+&lt;img src="image.jpg" alt="Description"&gt;
+&lt;video controls&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+&lt;audio controls&gt;
+  &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;
+&lt;iframe src="url"&gt;&lt;/iframe&gt;
+      </div>
+    </div>
+
+    <!-- Tables -->
+    <div class="cheat-card">
+      <h3>Tables</h3>
+      <div class="snippet">
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Header&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Data&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;&lt;td&gt;Footer&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;
+      </div>
+    </div>
+
+    <!-- Forms -->
+    <div class="cheat-card">
+      <h3>Forms</h3>
+      <div class="snippet">
+&lt;form action="/submit" method="post"&gt;
+  &lt;input type="text" name="username"&gt;
+  &lt;input type="password" name="pwd"&gt;
+  &lt;input type="email" name="email"&gt;
+  &lt;textarea name="message"&gt;&lt;/textarea&gt;
+  &lt;select name="choice"&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+      </div>
+    </div>
+
+    <!-- Semantic Elements -->
+    <div class="cheat-card">
+      <h3>Semantic Elements</h3>
+      <div class="snippet">
+&lt;header&gt;&lt;/header&gt;
+&lt;nav&gt;&lt;/nav&gt;
+&lt;main&gt;&lt;/main&gt;
+&lt;section&gt;&lt;/section&gt;
+&lt;article&gt;&lt;/article&gt;
+&lt;aside&gt;&lt;/aside&gt;
+&lt;footer&gt;&lt;/footer&gt;
+&lt;figure&gt;
+  &lt;figcaption&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+      </div>
+    </div>
+
+    <!-- Meta Tags -->
+    <div class="cheat-card">
+      <h3>Meta Tags</h3>
+      <div class="snippet">
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;meta name="description" content="Page description"&gt;
+&lt;meta name="keywords" content="HTML, CSS"&gt;
+&lt;meta name="author" content="Author"&gt;
+&lt;meta property="og:title" content="Social title"&gt;
+      </div>
+    </div>
+  </main>
+
+  <div style="text-align: center; margin: 2rem 0;">
+    <a href="../" class="back-btn">Back to HTML Course</a>
+  </div>
+
+  <script src="../../assets/js/course.js"></script>
+</body>
+</html>

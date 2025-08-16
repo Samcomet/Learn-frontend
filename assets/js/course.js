@@ -95,7 +95,6 @@ function updatePreview(codeBlock, previewFrame, consoleOutput) {
   try {
     const blob = new Blob([code], { type: 'text/html' });
     previewFrame.src = URL.createObjectURL(blob);
-    localStorage.setItem('lastCode', code);
     if (consoleOutput) consoleOutput.textContent = '';
   } catch (err) {
     console.error('Preview update failed:', err);
@@ -109,12 +108,11 @@ document.querySelectorAll('.code-editor').forEach(editor => {
   const consoleOutput = editor.querySelector('#console-output');
   
   if (codeBlock && previewFrame) {
-    // Load saved code
-    const savedCode = localStorage.getItem('lastCode');
-    if (savedCode) {
-      codeBlock.textContent = savedCode;
-      updatePreview(codeBlock, previewFrame, consoleOutput);
-    }
+    // Always use the code from the HTML file
+    const defaultCode = codeBlock.textContent;
+    
+    // Initial preview update
+    updatePreview(codeBlock, previewFrame, consoleOutput);
     
     // Set up preview frame
     previewFrame.addEventListener('load', () => {

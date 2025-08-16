@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Links | Web Dev School</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <!-- Glass Header -->
+  <header class="glass-header">
+    <nav>
+      <a href="../" class="logo">← BACK TO HTML</a>
+      <button id="theme-toggle">🌓</button>
+    </nav>
+  </header>
+
+  <!-- Lesson Hero -->
+  <section class="lesson-hero">
+    <h1 class="glow-text">HTML <span>LINKS</span></h1>
+    <p>Connecting web pages and resources</p>
+    <div class="progress-bar">
+      <div class="progress" style="width: 30%;" data-progress="30%"></div>
+    </div>
+  </section>
+
+  <!-- Lesson Content -->
+  <main class="lesson-container">
+    <!-- Theory First -->
+    <div class="theory">
+      <div class="explanation">
+        <h3>Understanding Hyperlinks</h3>
+        <p>Links are the fundamental building blocks of the web, allowing navigation between pages.</p>
+        
+        <div class="analogy">
+          <strong>🔗 Analogy:</strong> Think of links like doors between rooms in a house - each door leads to a different space.
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Editor -->
+    <div class="code-editor">
+      <div class="editor-tabs">
+        <button class="tab-button active" data-tab="code">Try It Yourself</button>
+        <button class="tab-button" data-tab="preview">See Result</button>
+      </div>
+      
+      <div class="editor-content">
+        <div class="tab-pane active" id="code-tab">
+          <div class="editor-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span>links-page.html</span>
+            <button class="copy-button" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code class="language-html" id="code-block" contenteditable="true">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Links Demonstration&lt;/title&gt;
+  &lt;style&gt;
+    body { font-family: Arial; padding: 2rem; }
+    .link-example { margin-bottom: 1.5rem; padding: 1rem; border-left: 4px solid #6e45e2; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;HTML Links Guide&lt;/h1&gt;
+  
+  &lt;div class="link-example"&gt;
+    &lt;h2&gt;1. Basic Link&lt;/h2&gt;
+    &lt;a href="https://webdev.school"&gt;Visit Web Dev School&lt;/a&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="link-example"&gt;
+    &lt;h2&gt;2. Link with Target&lt;/h2&gt;
+    &lt;a href="https://webdev.school" target="_blank" rel="noopener noreferrer"&gt;
+      Open in New Tab
+    &lt;/a&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="link-example"&gt;
+    &lt;h2&gt;3. Email Link&lt;/h2&gt;
+    &lt;a href="mailto:contact@webdev.school"&gt;Email Us&lt;/a&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="link-example"&gt;
+    &lt;h2&gt;4. Anchor Link&lt;/h2&gt;
+    &lt;a href="#section-about"&gt;Jump to About Section&lt;/a&gt;
+    &lt;div id="section-about" style="height: 800px; margin-top: 2rem;"&gt;
+      &lt;h3&gt;About Section&lt;/h3&gt;
+      &lt;p&gt;You've reached the anchor point!&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          
+          <div class="try-it">
+            <h3>✍️ Your Turn!</h3>
+            <p><strong>Try these edits:</strong></p>
+            <ol>
+              <li>Change the href value of the first link</li>
+              <li>Add a phone link using <code>tel:+1234567890</code></li>
+              <li>Create a new anchor link to a different section</li>
+            </ol>
+            <p>Then click <strong>"See Result"</strong> to view your changes!</p>
+          </div>
+        </div>
+        
+        <div class="tab-pane" id="preview-tab">
+          <iframe class="live-preview" sandbox="allow-scripts"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Theory Section -->
+    <div class="theory">
+      <div class="concept-card">
+        <h3>1. Link Attributes</h3>
+        <div class="snippet">
+&lt;a href="url" 
+   target="_blank" 
+   rel="noopener noreferrer"
+   title="Description"&gt;
+  Link Text
+&lt;/a&gt;
+        </div>
+      </div>
+      
+      <div class="concept-card">
+        <h3>2. Special Link Types</h3>
+        <div class="snippet">
+&lt;a href="mailto:email@example.com"&gt;Email&lt;/a&gt;
+&lt;a href="tel:+1234567890"&gt;Call Us&lt;/a&gt;
+&lt;a href="#section-id"&gt;Jump to Section&lt;/a&gt;
+        </div>
+      </div>
+      
+      <div class="concept-card">
+        <h3>3. Security Best Practices</h3>
+        <div class="snippet">
+&lt;!-- Always use for external links --&gt;
+&lt;a href="https://external.com" 
+   target="_blank" 
+   rel="noopener noreferrer"&gt;
+  Secure Link
+&lt;/a&gt;
+        </div>
+      </div>
+
+      <button class="cta-button" id="complete-lesson">I Understand! Mark as Completed</button>
+      
+      <div class="explanation" style="margin-top: 1rem;">
+        <h3>➡ Next Up: HTML Tables</h3>
+        <p>Learn how to organize data in rows and columns!</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="../../assets/js/course.js"></script>
+</body>
+</html>

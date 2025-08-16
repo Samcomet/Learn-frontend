@@ -2,8 +2,35 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <title>Semantic HTML | Web Dev School</title>
+  <title>Semantic HTML - Web Dev School</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    /* Beginner-friendly additions */
+    .explanation {
+      background: rgba(110, 69, 226, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1rem;
+      margin: 1.5rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .analogy {
+      background: rgba(136, 211, 206, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    .code-comment {
+      color: #88d3ce;
+      font-style: italic;
+      margin: 0.5rem 0;
+    }
+    .try-it {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+  </style>
 </head>
 <body>
   <!-- Glass Header -->
@@ -17,6 +44,7 @@
   <!-- Lesson Hero -->
   <section class="lesson-hero">
     <h1 class="glow-text">SEMANTIC <span>HTML</span></h1>
+    <p>Building meaningful web structures</p>
     <div class="progress-bar">
       <div class="progress" style="width: 20%;" data-progress="20%"></div>
     </div>
@@ -24,16 +52,28 @@
 
   <!-- Lesson Content -->
   <main class="lesson-container">
-    <!-- Editor with Tabs -->
+    <!-- Theory First -->
+    <div class="theory">
+      <div class="explanation">
+        <h3>Why Semantic HTML?</h3>
+        <p>Semantic tags tell browsers and screen readers <strong>what your content means</strong>, not just how it looks.</p>
+        
+        <div class="analogy">
+          <strong>📚 Analogy:</strong> If HTML were a book:<br>
+          - <code>&lt;div&gt;</code> = Blank pages<br>
+          - Semantic tags = Chapter titles, paragraphs, footnotes
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Editor -->
     <div class="code-editor">
       <div class="editor-tabs">
-        <button class="tab-button active" data-tab="code">Code</button>
-        <button class="tab-button" data-tab="preview">Live Preview</button>
-        <button class="tab-button" data-tab="console">Console</button>
+        <button class="tab-button active" data-tab="code">Try It Yourself</button>
+        <button class="tab-button" data-tab="preview">See Result</button>
       </div>
       
       <div class="editor-content">
-        <!-- Code Tab -->
         <div class="tab-pane active" id="code-tab">
           <div class="editor-header">
             <span class="dot red"></span>
@@ -42,94 +82,124 @@
             <span>semantic-page.html</span>
             <button class="copy-button" onclick="copyCode(this)">Copy</button>
           </div>
-          <pre><code class="language-html" id="code-block" contenteditable="true">
-&lt;!DOCTYPE html&gt;
+          <pre><code class="language-html" id="code-block" contenteditable="true">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
   &lt;meta charset="UTF-8"&gt;
-  &lt;title&gt;Semantic Example&lt;/title&gt;
+  &lt;title&gt;Semantic Page&lt;/title&gt;
   &lt;style&gt;
     body { font-family: Arial; margin: 0; }
     header { background: #6e45e2; color: white; padding: 1rem; }
-    nav { display: flex; gap: 1rem; }
-    main { padding: 2rem; }
-    footer { background: #0f0e17; color: white; padding: 1rem; }
+    nav { background: #0f0e17; padding: 1rem; }
+    nav a { color: white; margin-right: 1rem; text-decoration: none; }
+    main { padding: 2rem; max-width: 800px; margin: 0 auto; }
+    section { margin-bottom: 2rem; }
+    article { background: #f5f5f5; padding: 1rem; border-radius: 4px; }
+    aside { background: #e9e9e9; padding: 1rem; border-radius: 4px; }
+    footer { background: #0f0e17; color: white; padding: 1rem; text-align: center; }
   &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
   &lt;header&gt;
-    &lt;h1&gt;Website Title&lt;/h1&gt;
+    &lt;h1&gt;Web Dev School&lt;/h1&gt;
     &lt;nav&gt;
       &lt;a href="#"&gt;Home&lt;/a&gt;
+      &lt;a href="#"&gt;Courses&lt;/a&gt;
       &lt;a href="#"&gt;About&lt;/a&gt;
     &lt;/nav&gt;
   &lt;/header&gt;
   
   &lt;main&gt;
-    &lt;article&gt;
-      &lt;h2&gt;Article Title&lt;/h2&gt;
-      &lt;p&gt;This is a semantic HTML structure.&lt;/p&gt;
-      &lt;button onclick="console.log('Button clicked!')"&gt;Test Console&lt;/button&gt;
-    &lt;/article&gt;
+    &lt;section&gt;
+      &lt;h2&gt;Latest Articles&lt;/h2&gt;
+      &lt;article&gt;
+        &lt;h3&gt;Understanding Semantic HTML&lt;/h3&gt;
+        &lt;p&gt;Semantic HTML helps search engines and screen readers understand your content structure.&lt;/p&gt;
+        &lt;time datetime="2023-06-15"&gt;June 15, 2023&lt;/time&gt;
+      &lt;/article&gt;
+    &lt;/section&gt;
+    
+    &lt;aside&gt;
+      &lt;h3&gt;Related Links&lt;/h3&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;HTML5 Specification&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Accessibility Guide&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
   &lt;/main&gt;
   
   &lt;footer&gt;
-    &lt;p&gt;&copy; 2023 Web Dev School&lt;/p&gt;
+    &lt;p&gt;&copy; 2023 Web Dev School. All rights reserved.&lt;/p&gt;
+    &lt;address&gt;Contact us at: info@webdev.school&lt;/address&gt;
   &lt;/footer&gt;
 &lt;/body&gt;
-&lt;/html&gt;
-          </code></pre>
+&lt;/html&gt;</code></pre>
+          
+          <div class="try-it">
+            <h3>✍️ Your Turn!</h3>
+            <p><strong>Try these edits:</strong></p>
+            <ol>
+              <li>Change <code>&lt;header&gt;</code> to <code>&lt;div&gt;</code> and see the difference</li>
+              <li>Add a new <code>&lt;article&gt;</code> in the main section</li>
+              <li>Experiment with the <code>&lt;time&gt;</code> element</li>
+            </ol>
+            <p>Then click <strong>"See Result"</strong> to view your changes!</p>
+          </div>
         </div>
         
-        <!-- Preview Tab -->
         <div class="tab-pane" id="preview-tab">
           <iframe class="live-preview" sandbox="allow-scripts"></iframe>
         </div>
-        
-        <!-- Console Tab -->
-        <div class="tab-pane" id="console-tab">
-          <div class="console-header">
-            <span>Console Output</span>
-          </div>
-          <pre id="console-output"></pre>
-        </div>
       </div>
-      
-      <div class="resize-handle"></div>
     </div>
 
     <!-- Theory Section -->
     <div class="theory">
-      <h2>Semantic Elements</h2>
-      
       <div class="concept-card">
-        <h3>1. Structural Tags</h3>
-        <p>Replace &lt;div&gt; with meaningful elements:</p>
+        <h3>1. Main Structural Tags</h3>
         <div class="snippet">
-&lt;header&gt; &lt;nav&gt; &lt;main&gt;
-&lt;section&gt; &lt;article&gt; &lt;footer&gt;
+&lt;header&gt;   &lt;!-- Top section (logo/navigation) --&gt;
+&lt;nav&gt;      &lt;!-- Navigation links --&gt;
+&lt;main&gt;     &lt;!-- Primary content --&gt;
+&lt;section&gt;  &lt;!-- Thematic grouping --&gt;
+&lt;article&gt;  &lt;!-- Self-contained content --&gt;
+&lt;aside&gt;    &lt;!-- Side content --&gt;
+&lt;footer&gt;   &lt;!-- Bottom section --&gt;
+        </div>
+        
+        <div class="code-comment">
+          💡 <strong>Tip:</strong> These tags work exactly like divs, but with meaning!
         </div>
       </div>
       
       <div class="concept-card">
-        <h3>2. Landmark Roles</h3>
-        <p>Screen readers use these for navigation:</p>
-        <div class="snippet">
-&lt;main role="main"&gt;
-&lt;nav aria-label="Primary navigation"&gt;
-        </div>
+        <h3>2. Why It Matters</h3>
+        <ul>
+          <li><strong>Accessibility:</strong> Screen readers understand your structure</li>
+          <li><strong>SEO:</strong> Search engines prioritize semantic content</li>
+          <li><strong>Maintenance:</strong> Easier for developers to understand</li>
+        </ul>
       </div>
       
       <div class="concept-card">
-        <h3>3. Text Semantics</h3>
-        <p>Proper content tagging:</p>
+        <h3>3. Semantic Text Tags</h3>
         <div class="snippet">
 &lt;time datetime="2023-01-01"&gt;New Year&lt;/time&gt;
-&lt;address&gt;Contact info&lt;/address&gt;
+&lt;address&gt;contact@example.com&lt;/address&gt;
+&lt;figure&gt;
+  &lt;img src="photo.jpg" alt="Description"&gt;
+  &lt;figcaption&gt;A caption&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;mark&gt;Highlighted text&lt;/mark&gt;
         </div>
       </div>
 
-      <button class="cta-button" id="complete-lesson">Mark as Completed</button>
+      <button class="cta-button" id="complete-lesson">I Understand! Mark as Completed</button>
+      
+      <div class="explanation" style="margin-top: 1rem;">
+        <h3>➡ Next Up: HTML Forms</h3>
+        <p>Learn how to create interactive forms with <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, and more!</p>
+      </div>
     </div>
   </main>
 

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Projects | Web Dev School</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .project-card {
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(110, 69, 226, 0.2);
+    }
+    
+    .project-card h3 {
+      color: var(--primary);
+      margin-top: 0;
+      border-bottom: 2px solid;
+      padding-bottom: 0.5rem;
+    }
+    
+    .project-card .difficulty {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    
+    .beginner {
+      background: rgba(136, 211, 206, 0.2);
+      color: var(--secondary);
+    }
+    
+    .intermediate {
+      background: rgba(255, 203, 107, 0.2);
+      color: #ffcb6b;
+    }
+    
+    .advanced {
+      background: rgba(255, 83, 112, 0.2);
+      color: #ff5370;
+    }
+    
+    .project-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+    
+    .project-card .tag {
+      background: rgba(110, 69, 226, 0.2);
+      color: var(--primary);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+    }
+    
+    .project-card .objectives {
+      margin: 1rem 0;
+    }
+    
+    .project-card .objectives li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .project-card .objectives li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+    
+    .project-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    
+    .project-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(110, 69, 226, 0.3);
+    }
+    
+    .project-btn.secondary {
+      background: rgba(255, 255, 255, 0.1);
+      margin-left: 0.5rem;
+    }
+    
+    .project-btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <!-- Glass Header -->
+  <header class="glass-header">
+    <nav>
+      <a href="../" class="logo">← BACK TO HTML</a>
+      <button id="theme-toggle">🌓</button>
+    </nav>
+  </header>
+
+  <!-- Projects Hero -->
+  <section class="lesson-hero">
+    <h1 class="glow-text">HTML <span>PROJECTS</span></h1>
+    <p>Apply your HTML knowledge with these practical projects</p>
+    <div class="progress-bar">
+      <div class="progress" style="width: 80%;" data-progress="80%"></div>
+    </div>
+  </section>
+
+  <!-- Projects Content -->
+  <main class="projects-container">
+    <!-- Project 1 -->
+    <div class="project-card">
+      <span class="difficulty beginner">Beginner</span>
+      <h3>Personal Profile Page</h3>
+      <div class="tags">
+        <span class="tag">Semantic HTML</span>
+        <span class="tag">Links</span>
+        <span class="tag">Images</span>
+      </div>
+      <p>Create a personal profile page showcasing your skills and interests.</p>
+      <div class="objectives">
+        <strong>Learning Objectives:</strong>
+        <ul>
+          <li>Practice semantic HTML structure</li>
+          <li>Work with images and links</li>
+          <li>Organize content sections</li>
+        </ul>
+      </div>
+      <button class="project-btn">Start Project</button>
+      <button class="project-btn secondary">View Example</button>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card">
+      <span class="difficulty beginner">Beginner</span>
+      <h3>Recipe Page</h3>
+      <div class="tags">
+        <span class="tag">Lists</span>
+        <span class="tag">Headings</span>
+        <span class="tag">Semantic HTML</span>
+      </div>
+      <p>Build a recipe page with ingredients and instructions.</p>
+      <div class="objectives">
+        <strong>Learning Objectives:</strong>
+        <ul>
+          <li>Use ordered and unordered lists</li>
+          <li>Structure content with headings</li>
+          <li>Add images with proper alt text</li>
+        </ul>
+      </div>
+      <button class="project-btn">Start Project</button>
+      <button class="project-btn secondary">View Example</button>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card">
+      <span class="difficulty intermediate">Intermediate</span>
+      <h3>Product Landing Page</h3>
+      <div class="tags">
+        <span class="tag">Semantic HTML</span>
+        <span class="tag">Forms</span>
+        <span class="tag">Multimedia</span>
+      </div>
+      <p>Design a landing page for a product with features and signup form.</p>
+      <div class="objectives">
+        <strong>Learning Objectives:</strong>
+        <ul>
+          <li>Create complex page layouts</li>
+          <li>Implement forms with various inputs</li>
+          <li>Embed multimedia content</li>
+        </ul>
+      </div>
+      <button class="project-btn">Start Project</button>
+      <button class="project-btn secondary">View Example</button>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="project-card">
+      <span class="difficulty intermediate">Intermediate</span>
+      <h3>Technical Documentation</h3>
+      <div class="tags">
+        <span class="tag">Semantic HTML</span>
+        <span class="tag">Navigation</span>
+        <span class="tag">Accessibility</span>
+      </div>
+      <p>Build a technical documentation page with navigation.</p>
+      <div class="objectives">
+        <strong>Learning Objectives:</strong>
+        <ul>
+          <li>Create anchor links for navigation</li>
+          <li>Organize long-form content</li>
+          <li>Improve accessibility</li>
+        </ul>
+      </div>
+      <button class="project-btn">Start Project</button>
+      <button class="project-btn secondary">View Example</button>
+    </div>
+
+    <!-- Project 5 -->
+    <div class="project-card">
+      <span class="difficulty advanced">Advanced</span>
+      <h3>Portfolio Website</h3>
+      <div class="tags">
+        <span class="tag">Semantic HTML</span>
+        <span class="tag">Multimedia</span>
+        <span class="tag">Forms</span>
+        <span class="tag">Accessibility</span>
+      </div>
+      <p>Develop a complete portfolio website with multiple sections.</p>
+      <div class="objectives">
+        <strong>Learning Objectives:</strong>
+        <ul>
+          <li>Combine all HTML concepts</li>
+          <li>Create complex navigation</li>
+          <li>Optimize for accessibility</li>
+        </ul>
+      </div>
+      <button class="project-btn">Start Project</button>
+      <button class="project-btn secondary">View Example</button>
+    </div>
+
+    <!-- Project 6 -->
+    <div class="project-card">
+      <span class="difficulty advanced">Advanced</span>
+      <h3>Interactive Quiz</h3>
+      <div class="tags">
+        <span class="tag">Forms</span>
+        <span class="tag">Semantic HTML</span>
+        <span class="tag">Accessibility</span>
+      </div>
+      <p>Build an interactive quiz with form elements.</p>
+      <div class="objectives">
+        <strong>Learning Objectives:</strong>
+        <ul>
+          <li>Create complex forms</li>
+          <li>Implement accessible form controls</li>
+          <li>Structure interactive content</li>
+        </ul>
+      </div>
+      <button class="project-btn">Start Project</button>
+      <button class="project-btn secondary">View Example</button>
+    </div>
+  </main>
+
+  <script src="../../assets/js/course.js"></script>
+</body>
+</html>

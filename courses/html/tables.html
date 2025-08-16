@@ -2,8 +2,67 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <title>HTML Tables | Web Dev School</title>
+  <title>HTML Tables - Web Dev School</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    /* Beginner-friendly styles */
+    .explanation {
+      background: rgba(110, 69, 226, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1rem;
+      margin: 1.5rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .analogy {
+      background: rgba(136, 211, 206, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    .hands-on {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    .table-visual {
+      border: 2px dashed var(--primary);
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    .table-parts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .table-part {
+      border: 1px solid var(--glass-border);
+      padding: 1rem;
+      border-radius: 6px;
+    }
+    
+    /* Code Display Fixes */
+    .code-container {
+      background: #282a36;
+      border-radius: 6px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .language-html {
+      color: #f8f8f2;
+      white-space: pre-wrap;
+      margin: 0;
+      font-family: 'Courier New', monospace;
+      line-height: 1.5;
+    }
+    .live-preview {
+      width: 100%;
+      height: 500px;
+      border: none;
+      background: white;
+    }
+  </style>
 </head>
 <body>
   <!-- Glass Header -->
@@ -17,6 +76,7 @@
   <!-- Lesson Hero -->
   <section class="lesson-hero">
     <h1 class="glow-text">HTML <span>TABLES</span></h1>
+    <p>Organizing data in rows and columns</p>
     <div class="progress-bar">
       <div class="progress" style="width: 40%;" data-progress="40%"></div>
     </div>
@@ -24,12 +84,46 @@
 
   <!-- Lesson Content -->
   <main class="lesson-container">
-    <!-- Code Editor -->
+    <!-- Theory First -->
+    <div class="theory">
+      <div class="explanation">
+        <h3>What Are HTML Tables?</h3>
+        <p>Tables let you display information in a grid format, like:</p>
+        <ul>
+          <li>Price comparisons</li>
+          <li>Class schedules</li>
+          <li>Sports standings</li>
+        </ul>
+        
+        <div class="analogy">
+          <strong>📊 Analogy:</strong> Think of tables like spreadsheets you create in Excel, but for websites!
+        </div>
+        
+        <div class="table-visual">
+          <p><strong>Every table has 4 key parts:</strong></p>
+          <div class="table-parts">
+            <div class="table-part">
+              <strong>1. Table Head</strong>
+              <p>Column titles (Name, Age, etc.)</p>
+            </div>
+            <div class="table-part">
+              <strong>2. Table Body</strong>
+              <p>Main content/data</p>
+            </div>
+            <div class="table-part">
+              <strong>3. Table Foot</strong>
+              <p>Summary/totals</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Editor -->
     <div class="code-editor">
       <div class="editor-tabs">
-        <button class="tab-button active" data-tab="code">Code</button>
-        <button class="tab-button" data-tab="preview">Live Preview</button>
-        <button class="tab-button" data-tab="console">Console</button>
+        <button class="tab-button active" data-tab="code">Try It Yourself</button>
+        <button class="tab-button" data-tab="preview">See Your Table</button>
       </div>
       
       <div class="editor-content">
@@ -38,117 +132,173 @@
             <span class="dot red"></span>
             <span class="dot yellow"></span>
             <span class="dot green"></span>
-            <span>data-table.html</span>
+            <span>class-schedule.html</span>
             <button class="copy-button" onclick="copyCode(this)">Copy</button>
           </div>
-          <pre><code class="language-html" id="code-block" contenteditable="true">
-&lt;!DOCTYPE html&gt;
+          <div class="code-container">
+            <pre><code class="language-html" id="code-block" contenteditable="true">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
   &lt;meta charset="UTF-8"&gt;
-  &lt;title&gt;Product Table&lt;/title&gt;
+  &lt;title&gt;Class Schedule&lt;/title&gt;
   &lt;style&gt;
-    body { font-family: Arial; padding: 2rem; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 0.75rem; text-align: left; border: 1px solid #ddd; }
-    th { background-color: #6e45e2; color: white; }
-    tr:nth-child(even) { background-color: #f2f2f2; }
-    tr:hover { background-color: #e6e6ff; }
-    caption { font-weight: bold; margin-bottom: 1rem; }
+    body {
+      font-family: Arial;
+      padding: 2rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #6e45e2;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    caption {
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
   &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
+  &lt;h1&gt;My Class Schedule&lt;/h1&gt;
+  
   &lt;table&gt;
-    &lt;caption&gt;Product Inventory&lt;/caption&gt;
+    &lt;caption&gt;Spring 2023 Schedule&lt;/caption&gt;
     &lt;thead&gt;
       &lt;tr&gt;
-        &lt;th scope="col"&gt;ID&lt;/th&gt;
-        &lt;th scope="col"&gt;Product&lt;/th&gt;
-        &lt;th scope="col"&gt;Price&lt;/th&gt;
-        &lt;th scope="col"&gt;Stock&lt;/th&gt;
+        &lt;th&gt;Day&lt;/th&gt;
+        &lt;th&gt;Time&lt;/th&gt;
+        &lt;th&gt;Class&lt;/th&gt;
+        &lt;th&gt;Room&lt;/th&gt;
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
       &lt;tr&gt;
-        &lt;th scope="row"&gt;1001&lt;/th&gt;
-        &lt;td&gt;Web Dev Course&lt;/td&gt;
-        &lt;td&gt;$49.99&lt;/td&gt;
-        &lt;td&gt;In stock&lt;/td&gt;
+        &lt;td&gt;Monday&lt;/td&gt;
+        &lt;td&gt;9:00 AM&lt;/td&gt;
+        &lt;td&gt;Web Development&lt;/td&gt;
+        &lt;td&gt;Lab 205&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-        &lt;th scope="row"&gt;1002&lt;/th&gt;
-        &lt;td&gt;CSS Masterclass&lt;/td&gt;
-        &lt;td&gt;$29.99&lt;/td&gt;
-        &lt;td&gt;Low stock&lt;/td&gt;
+        &lt;td&gt;Wednesday&lt;/td&gt;
+        &lt;td&gt;11:00 AM&lt;/td&gt;
+        &lt;td&gt;Graphic Design&lt;/td&gt;
+        &lt;td&gt;Room 101&lt;/td&gt;
       &lt;/tr&gt;
     &lt;/tbody&gt;
     &lt;tfoot&gt;
       &lt;tr&gt;
-        &lt;td colspan="3"&gt;Total Products&lt;/td&gt;
+        &lt;td colspan="3"&gt;Total Classes:&lt;/td&gt;
         &lt;td&gt;2&lt;/td&gt;
       &lt;/tr&gt;
     &lt;/tfoot&gt;
   &lt;/table&gt;
 &lt;/body&gt;
-&lt;/html&gt;
-          </code></pre>
+&lt;/html&gt;</code></pre>
+          </div>
+          
+          <div class="hands-on">
+            <h3>✍️ Let's Practice!</h3>
+            <p><strong>Try these edits:</strong></p>
+            <ol>
+              <li>Add a new class row (copy a &lt;tr&gt; section)</li>
+              <li>Change the background color of header cells</li>
+              <li>Add a new column for "Instructor"</li>
+            </ol>
+            <p>Then click <strong>"See Your Table"</strong> to view changes!</p>
+          </div>
         </div>
         
-        <!-- Preview Tab -->
         <div class="tab-pane" id="preview-tab">
           <iframe class="live-preview" sandbox="allow-scripts"></iframe>
         </div>
-        
-        <!-- Console Tab -->
-        <div class="tab-pane" id="console-tab">
-          <div class="console-header">
-            <span>Console Output</span>
-          </div>
-          <pre id="console-output"></pre>
-        </div>
       </div>
-      
-      <div class="resize-handle"></div>
     </div>
 
     <!-- Theory Section -->
     <div class="theory">
-      <h2>Table Structure</h2>
-      
       <div class="concept-card">
-        <h3>1. Semantic Table Elements</h3>
-        <p>Proper table organization:</p>
+        <h3>1. Table Building Blocks</h3>
         <div class="snippet">
 &lt;table&gt;
-  &lt;caption&gt;Description&lt;/caption&gt;
-  &lt;thead&gt; &lt;tbody&gt; &lt;tfoot&gt;
+  &lt;caption&gt;Table Title&lt;/caption&gt;
+  &lt;thead&gt; &lt;!-- Column headers --&gt;
+    &lt;tr&gt; &lt;!-- Table row --&gt;
+      &lt;th&gt;Header Cell&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt; &lt;!-- Main content --&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Data Cell&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
         </div>
-      </div>
-      
-      <div class="concept-card">
-        <h3>2. Accessibility Features</h3>
-        <p>Screen reader friendly markup:</p>
-        <div class="snippet">
-&lt;th scope="col"&gt;Header&lt;/th&gt;
-&lt;th scope="row"&gt;Row Header&lt;/th&gt;
-&lt;td headers="col1 row1"&gt;Data&lt;/td&gt;
+        <div class="code-comment">
+          Every table needs these structural elements.
         </div>
       </div>
       
       <div class="concept-card">
-        <h3>3. Advanced Features</h3>
-        <p>Complex table patterns:</p>
+        <h3>2. Spanning Cells</h3>
         <div class="snippet">
-&lt;td rowspan="2"&gt;Spans 2 rows&lt;/td&gt;
-&lt;td colspan="3"&gt;Spans 3 columns&lt;/td&gt;
+&lt;td colspan="2"&gt;Spans 2 columns&lt;/td&gt;
+&lt;td rowspan="3"&gt;Spans 3 rows&lt;/td&gt;
+        </div>
+        <div class="code-comment">
+          Use these when you need cells to merge across columns or rows.
+        </div>
+      </div>
+      
+      <div class="concept-card">
+        <h3>3. Accessibility Tips</h3>
+        <div class="snippet">
+&lt;th scope="col"&gt;Name&lt;/th&gt; &lt;!-- Column header --&gt;
+&lt;th scope="row"&gt;Total:&lt;/th&gt; &lt;!-- Row header --&gt;
+        </div>
+        <div class="code-comment">
+          Helps screen readers understand table structure.
         </div>
       </div>
 
-      <button class="cta-button" id="complete-lesson">Mark as Completed</button>
+      <button class="cta-button" id="complete-lesson">I Understand! Mark as Completed</button>
+      
+      <div class="explanation" style="margin-top: 1rem;">
+        <h3>➡ Next Up: Multimedia</h3>
+        <p>Learn how to add images, videos and audio to your webpages!</p>
+      </div>
     </div>
   </main>
 
   <script src="../../assets/js/course.js"></script>
+  <!-- Initialize Preview -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const codeBlock = document.getElementById('code-block');
+      const previewFrame = document.querySelector('.live-preview');
+      
+      // First load
+      updatePreview();
+      
+      // Auto-update when typing
+      codeBlock.addEventListener('input', function() {
+        updatePreview();
+      });
+      
+      function updatePreview() {
+        if (!codeBlock || !previewFrame) return;
+        previewFrame.srcdoc = codeBlock.textContent;
+      }
+    });
+  </script>
 </body>
 </html>

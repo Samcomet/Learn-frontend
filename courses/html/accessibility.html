@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Accessibility | Web Dev School</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    .accessibility-tips {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .tip-card {
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .tip-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(110, 69, 226, 0.2);
+    }
+    
+    .tip-card h3 {
+      color: var(--primary);
+      margin-top: 0;
+      border-bottom: 2px solid;
+      padding-bottom: 0.5rem;
+    }
+    
+    .good-example {
+      background: rgba(136, 211, 206, 0.1);
+      border-left: 3px solid var(--secondary);
+      padding: 0.8rem;
+      margin: 1rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .bad-example {
+      background: rgba(255, 83, 112, 0.1);
+      border-left: 3px solid #ff5370;
+      padding: 0.8rem;
+      margin: 1rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .example-label {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Glass Header -->
+  <header class="glass-header">
+    <nav>
+      <a href="../" class="logo">← BACK TO HTML</a>
+      <button id="theme-toggle">🌓</button>
+    </nav>
+  </header>
+
+  <!-- Lesson Hero -->
+  <section class="lesson-hero">
+    <h1 class="glow-text">HTML <span>ACCESSIBILITY</span></h1>
+    <p>Building websites everyone can use</p>
+    <div class="progress-bar">
+      <div class="progress" style="width: 70%;" data-progress="70%"></div>
+    </div>
+  </section>
+
+  <!-- Lesson Content -->
+  <main class="lesson-container">
+    <!-- Interactive Editor -->
+    <div class="code-editor">
+      <div class="editor-tabs">
+        <button class="tab-button active" data-tab="code">Try It Yourself</button>
+        <button class="tab-button" data-tab="preview">Live Preview</button>
+      </div>
+      
+      <div class="editor-content">
+        <div class="tab-pane active" id="code-tab">
+          <div class="editor-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span>accessible-page.html</span>
+            <button class="copy-button" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code class="language-html" id="code-block" contenteditable="true">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Accessible Web Page&lt;/title&gt;
+  &lt;style&gt;
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+    }
+    .skip-link:focus {
+      left: 10px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;a href="#main" class="skip-link"&gt;Skip to content&lt;/a&gt;
+  
+  &lt;header role="banner"&gt;
+    &lt;nav aria-label="Main navigation"&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+  
+  &lt;main id="main" role="main"&gt;
+    &lt;article&gt;
+      &lt;h1&gt;Accessibility Matters&lt;/h1&gt;
+      
+      &lt;section aria-labelledby="images-heading"&gt;
+        &lt;h2 id="images-heading"&gt;Image Examples&lt;/h2&gt;
+        &lt;img src="graph.jpg" alt="Bar graph showing accessibility adoption rates"&gt;
+        &lt;figure&gt;
+          &lt;img src="team.jpg" alt="Diverse team working together"&gt;
+          &lt;figcaption&gt;Our inclusive team&lt;/figcaption&gt;
+        &lt;/figure&gt;
+      &lt;/section&gt;
+      
+      &lt;section aria-labelledby="forms-heading"&gt;
+        &lt;h2 id="forms-heading"&gt;Accessible Form&lt;/h2&gt;
+        &lt;form&gt;
+          &lt;div&gt;
+            &lt;label for="name"&gt;Full Name:&lt;/label&gt;
+            &lt;input type="text" id="name" name="name" required&gt;
+          &lt;/div&gt;
+          
+          &lt;fieldset&gt;
+            &lt;legend&gt;Preferred Contact Method&lt;/legend&gt;
+            &lt;input type="radio" id="email" name="contact"&gt;
+            &lt;label for="email"&gt;Email&lt;/label&gt;
+            
+            &lt;input type="radio" id="phone" name="contact"&gt;
+            &lt;label for="phone"&gt;Phone&lt;/label&gt;
+          &lt;/fieldset&gt;
+          
+          &lt;button type="submit"&gt;Submit&lt;/button&gt;
+        &lt;/form&gt;
+      &lt;/section&gt;
+    &lt;/article&gt;
+  &lt;/main&gt;
+  
+  &lt;footer role="contentinfo"&gt;
+    &lt;p&gt;&copy; 2023 Accessible Web Inc.&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+        
+        <!-- Preview Tab -->
+        <div class="tab-pane" id="preview-tab">
+          <iframe class="live-preview" sandbox="allow-scripts"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accessibility Tips -->
+    <div class="theory">
+      <h2>Accessibility Best Practices</h2>
+      <div class="accessibility-tips">
+        <!-- Tip 1 -->
+        <div class="tip-card">
+          <h3>Semantic HTML</h3>
+          <p>Use proper HTML elements for their intended purpose.</p>
+          
+          <div class="good-example">
+            <span class="example-label">Good:</span>
+            &lt;button&gt;Submit&lt;/button&gt;
+          </div>
+          
+          <div class="bad-example">
+            <span class="example-label">Bad:</span>
+            &lt;div onclick="submitForm()"&gt;Submit&lt;/div&gt;
+          </div>
+        </div>
+        
+        <!-- Tip 2 -->
+        <div class="tip-card">
+          <h3>Text Alternatives</h3>
+          <p>Always provide text alternatives for non-text content.</p>
+          
+          <div class="good-example">
+            <span class="example-label">Good:</span>
+            &lt;img src="chart.jpg" alt="Sales growth chart showing 20% increase"&gt;
+          </div>
+          
+          <div class="bad-example">
+            <span class="example-label">Bad:</span>
+            &lt;img src="chart.jpg"&gt;
+          </div>
+        </div>
+        
+        <!-- Tip 3 -->
+        <div class="tip-card">
+          <h3>Keyboard Navigation</h3>
+          <p>Ensure all functionality is available via keyboard.</p>
+          
+          <div class="good-example">
+            <span class="example-label">Good:</span>
+            &lt;a href="#"&gt;Link&lt;/a&gt;<br>
+            &lt;button&gt;Button&lt;/button&gt;
+          </div>
+          
+          <div class="bad-example">
+            <span class="example-label">Bad:</span>
+            &lt;div tabindex="0"&gt;Fake button&lt;/div&gt;
+          </div>
+        </div>
+        
+        <!-- Tip 4 -->
+        <div class="tip-card">
+          <h3>ARIA Attributes</h3>
+          <p>Use ARIA to enhance accessibility when needed.</p>
+          
+          <div class="good-example">
+            <span class="example-label">Good:</span>
+            &lt;nav aria-label="Main navigation"&gt;
+          </div>
+          
+          <div class="bad-example">
+            <span class="example-label">Bad:</span>
+            &lt;div class="nav"&gt;
+          </div>
+        </div>
+        
+        <!-- Tip 5 -->
+        <div class="tip-card">
+          <h3>Color Contrast</h3>
+          <p>Ensure sufficient contrast between text and background.</p>
+          
+          <div class="good-example">
+            <span class="example-label">Good:</span>
+            color: #000; background: #fff;
+          </div>
+          
+          <div class="bad-example">
+            <span class="example-label">Bad:</span>
+            color: #999; background: #eee;
+          </div>
+        </div>
+        
+        <!-- Tip 6 -->
+        <div class="tip-card">
+          <h3>Form Accessibility</h3>
+          <p>Always associate labels with form controls.</p>
+          
+          <div class="good-example">
+            <span class="example-label">Good:</span>
+            &lt;label for="email"&gt;Email:&lt;/label&gt;<br>
+            &lt;input id="email" type="email"&gt;
+          </div>
+          
+          <div class="bad-example">
+            <span class="example-label">Bad:</span>
+            &lt;div&gt;Email:&lt;/div&gt;<br>
+            &lt;input type="email"&gt;
+          </div>
+        </div>
+      </div>
+
+      <button class="cta-button" id="complete-lesson">I Understand! Mark as Completed</button>
+    </div>
+  </main>
+
+  <script src="../../assets/js/course.js"></script>
+</body>
+</html>
