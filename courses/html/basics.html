@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Basics | Web Dev School</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <!-- Glass Header -->
+  <header class="glass-header">
+    <nav>
+      <a href="../" class="logo">← BACK TO HTML</a>
+      <button id="theme-toggle">🌓</button>
+    </nav>
+  </header>
+
+  <!-- Lesson Hero -->
+  <section class="lesson-hero">
+    <h1 class="glow-text">HTML <span>BASICS</span></h1>
+    <div class="progress-bar">
+      <div class="progress" style="width: 10%;" data-progress="10%"></div>
+    </div>
+  </section>
+
+  <!-- Lesson Content -->
+  <main class="lesson-container">
+    <!-- Live Code Editor -->
+    <!-- Inside the code-editor div (replace the existing code block) -->
+<!-- Replace the existing code-editor div with this: -->
+<div class="code-editor">
+  <div class="editor-tabs">
+    <button class="tab-button active" data-tab="code">Code</button>
+    <button class="tab-button" data-tab="preview">Live Preview</button>
+  </div>
+
+  <div class="editor-content">
+    <!-- Code Tab -->
+    <div class="tab-pane active" id="code-tab">
+      <div class="editor-header">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span>basic-document.html</span>
+        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code class="language-html" id="code-block" contenteditable="true">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;My First Page&lt;/title&gt;
+  &lt;style&gt;
+    body { font-family: Arial; text-align: center; }
+    h1 { color: #6e45e2; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello World!&lt;/h1&gt;
+  &lt;p&gt;Edit this code to see changes!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+      </code></pre>
+    </div>
+
+    <!-- Preview Tab -->
+    <div class="tab-pane" id="preview-tab">
+      <iframe class="live-preview" sandbox="allow-scripts"></iframe>
+    </div>
+  </div>
+</div>
+    <!-- Theory Section -->
+    <div class="theory">
+      <h2>The HTML Skeleton</h2>
+      <div class="concept-card">
+        <h3>1. DOCTYPE Declaration</h3>
+        <p>Tells browsers this is an HTML5 document.</p>
+        <div class="snippet">&lt;!DOCTYPE html&gt;</div>
+      </div>
+
+      <div class="concept-card">
+        <h3>2. Root Element</h3>
+        <p>Wraps all content. Always use <code>lang</code> attribute.</p>
+        <div class="snippet">&lt;html lang="en"&gt;&lt;/html&gt;</div>
+      </div>
+
+      <button class="cta-button" id="complete-lesson">Mark as Completed</button>
+    </div>
+  </main>
+
+  <script src="../../assets/js/course.js"></script>
+</body>
+</html>

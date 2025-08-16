@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Course | Web Dev School</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <!-- Glass Header (Reuse from homepage) -->
+  <header class="glass-header">
+    <nav>
+      <a href="../../index.html" class="logo">← BACK TO HOME</a>
+      <button id="theme-toggle">🌓</button>
+    </nav>
+  </header>
+
+  <!-- Course Hero -->
+  <section class="course-hero">
+    <h1 class="glow-text">HTML <span>COURSE</span></h1>
+    <p>Master the skeleton of the web. No fluff.</p>
+    <div class="progress-bar">
+      <div class="progress" style="width: 0%;" data-progress="0">0%</div>
+    </div>
+  </section>
+
+  <!-- Lesson Grid -->
+  <div class="lesson-grid">
+    <!-- Lesson 1 -->
+    <a href="basics.html" class="lesson-card" data-completed="false">
+      <div class="card-icon">📄</div>
+      <h3>HTML Basics</h3>
+      <p>Doctype, headings, text tags.</p>
+      <div class="checkmark">✓</div>
+    </a>
+
+    <!-- Lesson 2 -->
+    <a href="semantic-html.html" class="lesson-card" data-completed="false">
+      <div class="card-icon">🏗️</div>
+      <h3>Semantic HTML</h3>
+      <p>&lt;header&gt;, &lt;article&gt;, &lt;footer&gt;</p>
+      <div class="checkmark">✓</div>
+    </a>
+
+    <!-- Add more lessons... -->
+  </div>
+
+  <script src="../../assets/js/course.js"></script>
+</body>
+</html>
