@@ -1,10 +1,10 @@
 // ===== DOM Elements =====
 const lessonCards = document.querySelectorAll('.lesson-card');
 const progressBar = document.querySelector('.progress');
-const codeBlock = document.getElementById('code-block');
-const previewFrame = document.querySelector('.live-preview');
-const consoleOutput = document.getElementById('console-output');
-const resizeHandle = document.querySelector('.resize-handle');
+const codeBlocks = document.querySelectorAll('.language-html');
+const previewFrames = document.querySelectorAll('.live-preview');
+const consoleOutputs = document.querySelectorAll('#console-output');
+const resizeHandles = document.querySelectorAll('.resize-handle');
 
 // ===== Progress Tracking =====
 let completedLessons = JSON.parse(localStorage.getItem('completedHTML')) || [];
@@ -17,7 +17,6 @@ if (lessonCards.length && progressBar) {
 // Mark lesson as completed
 lessonCards.forEach(card => {
   card.addEventListener('click', (e) => {
-    // Prevent marking when clicking links/buttons inside card
     if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return;
     
     const lessonTitle = card.querySelector('h3').textContent;
@@ -31,7 +30,7 @@ lessonCards.forEach(card => {
 });
 
 function updateProgress() {
-  const totalLessons = lessonCards.length || 1; // Prevent division by zero
+  const totalLessons = lessonCards.length || 1;
   const completed = completedLessons.length;
   const progressPercent = Math.round((completed / totalLessons) * 100);
   
@@ -49,6 +48,7 @@ function updateProgress() {
 
 // ===== Code Copy Function =====
 function copyCode(button) {
+  const codeBlock = button.closest('.editor-header').nextElementSibling.querySelector('code');
   if (!codeBlock) return;
   
   const range = document.createRange();
@@ -58,7 +58,6 @@ function copyCode(button) {
   
   try {
     document.execCommand('copy');
-    // Visual feedback
     button.textContent = 'Copied!';
     button.classList.add('copied');
     setTimeout(() => {
@@ -73,7 +72,7 @@ function copyCode(button) {
 }
 
 // ===== Live Preview System =====
-function hijackConsole(iframeWindow) {
+function hijackConsole(iframeWindow, consoleOutput) {
   if (!iframeWindow || !consoleOutput) return;
   
   const consoleMethods = ['log', 'warn', 'error'];
@@ -89,7 +88,7 @@ function hijackConsole(iframeWindow) {
   });
 }
 
-function updatePreview() {
+function updatePreview(codeBlock, previewFrame, consoleOutput) {
   if (!codeBlock || !previewFrame) return;
   
   const code = codeBlock.textContent;
@@ -103,35 +102,78 @@ function updatePreview() {
   }
 }
 
-// Initialize preview system
-if (codeBlock && previewFrame) {
-  window.addEventListener('DOMContentLoaded', () => {
+// Initialize all editor instances
+document.querySelectorAll('.code-editor').forEach(editor => {
+  const codeBlock = editor.querySelector('.language-html');
+  const previewFrame = editor.querySelector('.live-preview');
+  const consoleOutput = editor.querySelector('#console-output');
+  
+  if (codeBlock && previewFrame) {
+    // Load saved code
     const savedCode = localStorage.getItem('lastCode');
     if (savedCode) {
       codeBlock.textContent = savedCode;
-      updatePreview();
+      updatePreview(codeBlock, previewFrame, consoleOutput);
     }
     
+    // Set up preview frame
     previewFrame.addEventListener('load', () => {
       try {
-        hijackConsole(previewFrame.contentWindow);
+        hijackConsole(previewFrame.contentWindow, consoleOutput);
       } catch (e) {
         if (consoleOutput) {
           consoleOutput.textContent = `Error: ${e.message}`;
-          const consoleTab = document.querySelector('[data-tab="console"]');
+          const consoleTab = editor.querySelector('[data-tab="console"]');
           if (consoleTab) consoleTab.click();
         }
       }
     });
+    
+    // Auto-update preview when typing
+    let typingTimer;
+    codeBlock.addEventListener('input', () => {
+      clearTimeout(typingTimer);
+      typingTimer = setTimeout(() => {
+        updatePreview(codeBlock, previewFrame, consoleOutput);
+      }, 500);
+    });
+  }
+});
+
+// ===== Tab System =====
+document.querySelectorAll('.tab-button').forEach(button => {
+  button.addEventListener('click', () => {
+    const tabId = button.getAttribute('data-tab');
+    const editor = button.closest('.code-editor');
+    
+    // Update active tab
+    editor.querySelectorAll('.tab-button').forEach(btn => 
+      btn.classList.remove('active'));
+    button.classList.add('active');
+    
+    // Show corresponding pane
+    editor.querySelectorAll('.tab-pane').forEach(pane => 
+      pane.classList.remove('active'));
+    editor.querySelector(`#${tabId}-tab`).classList.add('active');
+    
+    // Refresh preview when switching to preview tab
+    if (tabId === 'preview') {
+      const codeBlock = editor.querySelector('.language-html');
+      const previewFrame = editor.querySelector('.live-preview');
+      const consoleOutput = editor.querySelector('#console-output');
+      updatePreview(codeBlock, previewFrame, consoleOutput);
+    }
   });
-}
+});
 
 // ===== Resizable Editor =====
-if (resizeHandle) {
-  const editorContent = document.querySelector('.editor-content');
+resizeHandles.forEach(handle => {
+  const editorContent = handle.closest('.editor-content');
+  if (!editorContent) return;
+
   let startY, startHeight;
 
-  resizeHandle.addEventListener('mousedown', (e) => {
+  handle.addEventListener('mousedown', (e) => {
     e.preventDefault();
     startY = e.clientY;
     startHeight = parseInt(getComputedStyle(editorContent).height, 10);
@@ -146,4 +188,4 @@ if (resizeHandle) {
   function stopResize() {
     document.removeEventListener('mousemove', resize);
   }
-}
+});

@@ -2,8 +2,33 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <title>HTML Basics | Web Dev School</title>
+  <title>HTML Basics - Web Dev School</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
+  <!-- New beginner-friendly styles -->
+  <style>
+    .explanation {
+      background: rgba(110, 69, 226, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1rem;
+      margin: 1.5rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .explanation h3 {
+      color: var(--primary);
+      margin-top: 0;
+    }
+    .analogy {
+      background: rgba(136, 211, 206, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    .code-comment {
+      color: #88d3ce;
+      font-style: italic;
+      margin: 0.5rem 0;
+    }
+  </style>
 </head>
 <body>
   <!-- Glass Header -->
@@ -17,6 +42,7 @@
   <!-- Lesson Hero -->
   <section class="lesson-hero">
     <h1 class="glow-text">HTML <span>BASICS</span></h1>
+    <p>Your first steps in building websites</p>
     <div class="progress-bar">
       <div class="progress" style="width: 10%;" data-progress="10%"></div>
     </div>
@@ -24,66 +50,130 @@
 
   <!-- Lesson Content -->
   <main class="lesson-container">
-    <!-- Live Code Editor -->
-    <!-- Inside the code-editor div (replace the existing code block) -->
-<!-- Replace the existing code-editor div with this: -->
-<div class="code-editor">
-  <div class="editor-tabs">
-    <button class="tab-button active" data-tab="code">Code</button>
-    <button class="tab-button" data-tab="preview">Live Preview</button>
-  </div>
-
-  <div class="editor-content">
-    <!-- Code Tab -->
-    <div class="tab-pane active" id="code-tab">
-      <div class="editor-header">
-        <span class="dot red"></span>
-        <span class="dot yellow"></span>
-        <span class="dot green"></span>
-        <span>basic-document.html</span>
-        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+    <!-- Theory First -->
+    <div class="theory">
+      <div class="explanation">
+        <h3>What is HTML?</h3>
+        <p>HTML is the <strong>skeleton</strong> of every website. It defines the structure and content.</p>
+        
+        <div class="analogy">
+          <strong>🍎 Analogy:</strong> If a website were a house:<br>
+          - HTML = Walls and structure<br>
+          - CSS = Paint and decorations<br>
+          - JavaScript = Electricity and interactivity
+        </div>
       </div>
-      <pre><code class="language-html" id="code-block" contenteditable="true">
+
+      <!-- Basic Structure Explanation -->
+      <div class="concept-card">
+        <h3>1. The Basic Structure</h3>
+        <p>Every HTML document needs these essential parts:</p>
+        <div class="snippet">
 &lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;!-- Invisible settings go here --&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- Visible content goes here --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+        </div>
+        
+        <div class="code-comment">
+          <!-- Annotated explanation -->
+          ✓ <strong>DOCTYPE</strong> - Tells browsers this is HTML5<br>
+          ✓ <strong>html</strong> - Wraps your entire page<br>
+          ✓ <strong>head</strong> - Contains page settings (invisible)<br>
+          ✓ <strong>body</strong> - Contains visible content
+        </div>
+      </div>
+
+      <!-- Common Tags -->
+      <div class="concept-card">
+        <h3>2. Common Tags You'll Use</h3>
+        
+        <div class="snippet">
+&lt;h1&gt;Main Heading&lt;/h1&gt;    &lt;!-- Biggest heading --&gt;
+&lt;h2&gt;Subheading&lt;/h2&gt;     &lt;!-- Smaller heading --&gt;
+&lt;p&gt;Paragraph text.&lt;/p&gt;   &lt;!-- Normal text --&gt;
+&lt;a href="#"&gt;Link&lt;/a&gt;    &lt;!-- Clickable link --&gt;
+&lt;img src="photo.jpg"&gt;  &lt;!-- Shows an image --&gt;
+&lt;button&gt;Click Me&lt;/button&gt; &lt;!-- Interactive button --&gt;
+        </div>
+        
+        <div class="code-comment">
+          💡 <strong>Pro Tip:</strong> Most tags come in pairs (opening and closing)!
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Editor -->
+    <div class="code-editor">
+      <div class="editor-tabs">
+        <button class="tab-button active" data-tab="code">Try It Yourself</button>
+        <button class="tab-button" data-tab="preview">See Result</button>
+      </div>
+      
+      <div class="editor-content">
+        <div class="tab-pane active" id="code-tab">
+          <div class="editor-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span>my-first-page.html</span>
+          </div>
+          <pre><code class="language-html" id="code-block" contenteditable="true">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
 &lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
   &lt;title&gt;My First Page&lt;/title&gt;
-  &lt;style&gt;
-    body { font-family: Arial; text-align: center; }
-    h1 { color: #6e45e2; }
-  &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
+  &lt;!-- EDIT THIS PART --&gt;
   &lt;h1&gt;Hello World!&lt;/h1&gt;
-  &lt;p&gt;Edit this code to see changes!&lt;/p&gt;
+  &lt;p&gt;Try changing this text&lt;/p&gt;
+  
+  &lt;!-- TRY ADDING: --&gt;
+  &lt;!-- 
+  &lt;button&gt;Click Me&lt;/button&gt;
+  &lt;img src="https://via.placeholder.com/200"&gt;
+  --&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-      </code></pre>
+          </code></pre>
+          
+          <div class="explanation" style="margin-top: 1rem;">
+            <h3>Your Turn!</h3>
+            <p>1. Edit the text between <code>&lt;h1&gt;</code> tags<br>
+               2. Uncomment the button/image by removing <code>&lt;!--</code> and <code>--&gt;</code><br>
+               3. Switch to "See Result" tab to view changes</p>
+          </div>
+        </div>
+        
+        <div class="tab-pane" id="preview-tab">
+          <iframe class="live-preview" sandbox="allow-scripts"></iframe>
+        </div>
+      </div>
     </div>
 
-    <!-- Preview Tab -->
-    <div class="tab-pane" id="preview-tab">
-      <iframe class="live-preview" sandbox="allow-scripts"></iframe>
-    </div>
-  </div>
-</div>
-    <!-- Theory Section -->
+    <!-- Next Steps -->
     <div class="theory">
-      <h2>The HTML Skeleton</h2>
       <div class="concept-card">
-        <h3>1. DOCTYPE Declaration</h3>
-        <p>Tells browsers this is an HTML5 document.</p>
-        <div class="snippet">&lt;!DOCTYPE html&gt;</div>
+        <h3>What You've Learned</h3>
+        <ul>
+          <li>HTML defines webpage structure</li>
+          <li>Basic document structure (DOCTYPE, html, head, body)</li>
+          <li>Common tags for text, images, and buttons</li>
+        </ul>
+        
+        <button class="cta-button" id="complete-lesson">I Understand! Mark as Completed</button>
+        
+        <div class="explanation" style="margin-top: 1rem;">
+          <h3>➡ Next Up: Semantic HTML</h3>
+          <p>Learn how to use tags like <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, and <code>&lt;article&gt;</code> to make your websites more meaningful!</p>
+        </div>
       </div>
-
-      <div class="concept-card">
-        <h3>2. Root Element</h3>
-        <p>Wraps all content. Always use <code>lang</code> attribute.</p>
-        <div class="snippet">&lt;html lang="en"&gt;&lt;/html&gt;</div>
-      </div>
-
-      <button class="cta-button" id="complete-lesson">Mark as Completed</button>
     </div>
   </main>
 

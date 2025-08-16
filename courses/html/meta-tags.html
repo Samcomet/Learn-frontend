@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <title>Meta Tags & SEO | Web Dev School</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <!-- Glass Header -->
+  <header class="glass-header">
+    <nav>
+      <a href="../" class="logo">← BACK TO HTML</a>
+      <button id="theme-toggle">🌓</button>
+    </nav>
+  </header>
+
+  <!-- Lesson Hero -->
+  <section class="lesson-hero">
+    <h1 class="glow-text">META TAGS <span>& SEO</span></h1>
+    <div class="progress-bar">
+      <div class="progress" style="width: 60%;" data-progress="60%"></div>
+    </div>
+  </section>
+
+  <!-- Lesson Content -->
+  <main class="lesson-container">
+    <!-- Code Editor -->
+    <div class="code-editor">
+      <div class="editor-tabs">
+        <button class="tab-button active" data-tab="code">Code</button>
+        <button class="tab-button" data-tab="preview">Live Preview</button>
+        <button class="tab-button" data-tab="console">Console</button>
+      </div>
+      
+      <div class="editor-content">
+        <div class="tab-pane active" id="code-tab">
+          <div class="editor-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span>seo-optimized.html</span>
+            <button class="copy-button" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code class="language-html" id="code-block" contenteditable="true">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;!-- Primary Meta Tags --&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+  
+  &lt;!-- SEO Meta Tags --&gt;
+  &lt;title&gt;Web Dev School - Learn HTML, CSS & JavaScript&lt;/title&gt;
+  &lt;meta name="description" content="Free web development tutorials for beginners. Learn HTML, CSS and JavaScript through interactive examples and projects."&gt;
+  &lt;meta name="keywords" content="HTML, CSS, JavaScript, web development, learn to code"&gt;
+  &lt;meta name="author" content="Web Dev School"&gt;
+  
+  &lt;!-- Open Graph / Social Media --&gt;
+  &lt;meta property="og:title" content="Web Dev School - Learn to Code"&gt;
+  &lt;meta property="og:description" content="Free web development tutorials for beginners."&gt;
+  &lt;meta property="og:type" content="website"&gt;
+  &lt;meta property="og:url" content="https://webdev.school"&gt;
+  &lt;meta property="og:image" content="https://webdev.school/images/og-preview.jpg"&gt;
+  
+  &lt;!-- Twitter Card --&gt;
+  &lt;meta name="twitter:card" content="summary_large_image"&gt;
+  &lt;meta name="twitter:creator" content="@webdevschool"&gt;
+  
+  &lt;!-- Favicons --&gt;
+  &lt;link rel="icon" href="/favicon.ico" sizes="any"&gt;
+  &lt;link rel="icon" href="/icon.svg" type="image/svg+xml"&gt;
+  &lt;link rel="apple-touch-icon" href="/apple-touch-icon.png"&gt;
+  &lt;link rel="manifest" href="/site.webmanifest"&gt;
+  
+  &lt;!-- Canonical URL --&gt;
+  &lt;link rel="canonical" href="https://webdev.school/html-tutorials"&gt;
+  
+  &lt;!-- Preload Critical Resources --&gt;
+  &lt;link rel="preload" href="/css/main.css" as="style"&gt;
+  &lt;link rel="preload" href="/js/main.js" as="script"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Page content would go here --&gt;
+  &lt;h1&gt;Welcome to Web Dev School!&lt;/h1&gt;
+  &lt;p&gt;Check the head section for SEO meta tags&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+          </code></pre>
+        </div>
+        
+        <!-- Preview Tab -->
+        <div class="tab-pane" id="preview-tab">
+          <iframe class="live-preview" sandbox="allow-scripts"></iframe>
+        </div>
+        
+        <!-- Console Tab -->
+        <div class="tab-pane" id="console-tab">
+          <div class="console-header">
+            <span>Console Output</span>
+          </div>
+          <pre id="console-output"></pre>
+        </div>
+      </div>
+      
+      <div class="resize-handle"></div>
+    </div>
+
+    <!-- Theory Section -->
+    <div class="theory">
+      <h2>Meta Tag Categories</h2>
+      
+      <div class="concept-card">
+        <h3>1. Essential Meta Tags</h3>
+        <p>Critical for all websites:</p>
+        <div class="snippet">
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+        </div>
+      </div>
+      
+      <div class="concept-card">
+        <h3>2. Social Media Meta</h3>
+        <p>Control how content appears when shared:</p>
+        <div class="snippet">
+&lt;meta property="og:title" content="Page Title"&gt;
+&lt;meta property="og:image" content="image.jpg"&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;
+        </div>
+      </div>
+      
+      <div class="concept-card">
+        <h3>3. Performance Tags</h3>
+        <p>Improve loading speed:</p>
+        <div class="snippet">
+&lt;link rel="preload" href="style.css" as="style"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com"&gt;
+&lt;link rel="dns-prefetch" href="//cdn.example.com"&gt;
+        </div>
+      </div>
+
+      <button class="cta-button" id="complete-lesson">Mark as Completed</button>
+    </div>
+  </main>
+
+  <script src="../../assets/js/course.js"></script>
+</body>
+</html>

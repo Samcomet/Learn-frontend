@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Multimedia | Web Dev School</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <!-- Glass Header -->
+  <header class="glass-header">
+    <nav>
+      <a href="../" class="logo">← BACK TO HTML</a>
+      <button id="theme-toggle">🌓</button>
+    </nav>
+  </header>
+
+  <!-- Lesson Hero -->
+  <section class="lesson-hero">
+    <h1 class="glow-text">HTML <span>MULTIMEDIA</span></h1>
+    <div class="progress-bar">
+      <div class="progress" style="width: 50%;" data-progress="50%"></div>
+    </div>
+  </section>
+
+  <!-- Lesson Content -->
+  <main class="lesson-container">
+    <!-- Code Editor -->
+    <div class="code-editor">
+      <div class="editor-tabs">
+        <button class="tab-button active" data-tab="code">Code</button>
+        <button class="tab-button" data-tab="preview">Live Preview</button>
+        <button class="tab-button" data-tab="console">Console</button>
+      </div>
+      
+      <div class="editor-content">
+        <div class="tab-pane active" id="code-tab">
+          <div class="editor-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span>media-page.html</span>
+            <button class="copy-button" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code class="language-html" id="code-block" contenteditable="true">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Media Showcase&lt;/title&gt;
+  &lt;style&gt;
+    body { font-family: Arial; padding: 2rem; max-width: 800px; margin: 0 auto; }
+    .media-container { margin-bottom: 2rem; border: 1px solid #eee; padding: 1rem; }
+    h2 { color: #6e45e2; border-bottom: 2px solid; padding-bottom: 0.5rem; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="media-container"&gt;
+    &lt;h2&gt;1. Image with Responsive Sizing&lt;/h2&gt;
+    &lt;img src="https://via.placeholder.com/800x400" 
+         alt="Sample landscape image"
+         width="800"
+         height="400"
+         loading="lazy"
+         srcset="https://via.placeholder.com/400x200 400w,
+                 https://via.placeholder.com/800x400 800w"
+         sizes="(max-width: 600px) 400px, 800px"&gt;
+  &lt;/div&gt;
+
+  &lt;div class="media-container"&gt;
+    &lt;h2&gt;2. Video Player&lt;/h2&gt;
+    &lt;video width="800" height="450" controls poster="https://via.placeholder.com/800x450"&gt;
+      &lt;source src="sample.mp4" type="video/mp4"&gt;
+      &lt;track kind="captions" src="captions.vtt" srclang="en" label="English"&gt;
+      Your browser doesn't support HTML5 video.
+    &lt;/video&gt;
+  &lt;/div&gt;
+
+  &lt;div class="media-container"&gt;
+    &lt;h2&gt;3. Audio Player&lt;/h2&gt;
+    &lt;audio controls&gt;
+      &lt;source src="sample.mp3" type="audio/mpeg"&gt;
+      Your browser doesn't support HTML5 audio.
+    &lt;/audio&gt;
+  &lt;/div&gt;
+
+  &lt;div class="media-container"&gt;
+    &lt;h2&gt;4. Embedded Content&lt;/h2&gt;
+    &lt;iframe width="800" height="450" 
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen&gt;
+    &lt;/iframe&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+          </code></pre>
+        </div>
+        
+        <!-- Preview Tab -->
+        <div class="tab-pane" id="preview-tab">
+          <iframe class="live-preview" sandbox="allow-scripts"></iframe>
+        </div>
+        
+        <!-- Console Tab -->
+        <div class="tab-pane" id="console-tab">
+          <div class="console-header">
+            <span>Console Output</span>
+          </div>
+          <pre id="console-output"></pre>
+        </div>
+      </div>
+      
+      <div class="resize-handle"></div>
+    </div>
+
+    <!-- Theory Section -->
+    <div class="theory">
+      <h2>Media Essentials</h2>
+      
+      <div class="concept-card">
+        <h3>1. Modern Image Handling</h3>
+        <p>Optimized loading techniques:</p>
+        <div class="snippet">
+&lt;img src="image.jpg"
+     srcset="image-400.jpg 400w,
+             image-800.jpg 800w"
+     sizes="(max-width: 600px) 400px, 800px"
+     loading="lazy"&gt;
+        </div>
+      </div>
+      
+      <div class="concept-card">
+        <h3>2. Video & Audio</h3>
+        <p>Accessible media players:</p>
+        <div class="snippet">
+&lt;video controls poster="preview.jpg"&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+  &lt;track kind="captions" src="subs.vtt"&gt;
+&lt;/video&gt;
+        </div>
+      </div>
+      
+      <div class="concept-card">
+        <h3>3. Embedding Content</h3>
+        <p>Safe iframe practices:</p>
+        <div class="snippet">
+&lt;iframe src="https://example.com" 
+        title="Description"
+        loading="lazy"
+        allowfullscreen&gt;
+&lt;/iframe&gt;
+        </div>
+      </div>
+
+      <button class="cta-button" id="complete-lesson">Mark as Completed</button>
+    </div>
+  </main>
+
+  <script src="../../assets/js/course.js"></script>
+</body>
+</html>
